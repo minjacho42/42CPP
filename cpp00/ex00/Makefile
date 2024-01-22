@@ -1,31 +1,31 @@
 .DEFAULT_GOAL := all
-SRCS =
-OBJS = $(SRCS:.c=.o)
-DEPS = $(SRCS:.c=.d)
+SRCS = megaphone.cpp
+OBJS = $(SRCS:.cpp=.o)
+DEPS = $(SRCS:.cpp=.d)
 CPP = c++ -Wall -Wextra -Werror -std=c++98 -MMD -MP
-NAME = bin_name
+NAME = megaphone
 -include $(DEPS)
 
 all :
-	@echo "bin_name : make $(NAME)"
+	@echo "megaphone : make $(NAME)"
 	@make $(NAME)
 
 $(NAME) : $(OBJS)
 	@$(CPP) -o $(NAME) $(OBJS)
 
-%.o : %.c
+%.o : %.cpp
 	@$(CPP) -c $<
 
 clean :
-	@echo "bin_name : make clean"
+	@echo "megaphone : make clean"
 	@rm -f $(OBJS) $(DEPS)
 
 fclean :
-	@echo "bin_name : make fclean"
+	@echo "megaphone : make fclean"
 	@rm -f $(OBJS) $(NAME) $(DEPS)
 
 re : fclean
-	@ echo "bin_name : make re"
+	@ echo "megaphone : make re"
 	@ make all
 
 .PHONY: all clean fclean re
