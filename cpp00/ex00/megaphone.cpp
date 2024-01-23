@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include <cctype>
 
 int	main(int argc, char *argv[])
 {
@@ -6,9 +8,10 @@ int	main(int argc, char *argv[])
 
 	for (int i = 1; i < argc; i++)
 	{
-		for (size_t j = 0; j < strlen(argv[i]); j++)
-			argv[i][j] = toupper(argv[i][j]);
-		std::cout << argv[i];
+		s = argv[i];
+		for (size_t idx = 0; idx < s.length(); idx++)
+			s[idx] = isalpha(s[idx]) ? toupper(s[idx]) : s[idx];
+		std::cout << s;
 	}
 	if (argc == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
