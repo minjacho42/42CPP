@@ -1,29 +1,21 @@
-#include <iostream>
-#include <string>
-#include <cctype>
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
+
+# include <iostream>
+# include <string>
+# include <cctype>
 
 class Contact
 {
-	private:
+	public :
 		std::string first_name;
 		std::string last_name;
 		std::string nick_name;
 		std::string phone_number;
 		std::string darkest_secret;
 		Contact();
+		Contact(std::string f_name, std::string l_name, std::string n_name, \
+				std::string number, std::string secret);
+};
 
-	public:
-		Contact(std::string first_name, std::string last_name, \
-				std::string nick_name, std::string phone_number, \
-				std::string darkest_secret);
-		std::string	GetFirstName();
-		std::string	GetLastName();
-		std::string	GetNickName();
-		std::string	GetPhoneNumber();
-		std::string	GetDarkestSecret();
-		void		SetFirstName(std::string str);
-		void		SetLastName(std::string str);
-		void		SetNickName(std::string str);
-		void		SetPhoneNumber(std::string str);
-		void		SetDarkestSecret(std::string str);
-}
+#endif

@@ -1,9 +1,21 @@
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
+
 #include <iostream>
 #include <string>
 #include <cctype>
+#include "Contact.hpp"
 
 class PhoneBook
 {
 	private :
-		std::array
-}
+		Contact contacts[8];
+		int contact_size;
+	public :
+		PhoneBook();
+		void add(Contact new_contact);
+		void search();
+		void exit();
+};
+
+#endif
