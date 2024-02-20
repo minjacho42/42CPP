@@ -5,5 +5,9 @@ Contact::Contact(std::string f_name, std::string l_name, std::string n_name, std
 
 Contact::Contact()
 {
-
+	this->first_name = "";
+	this->last_name = "";
+	this->nick_name = "";
+	this->phone_number = "";
+	this->darkest_secret = "";
 }
