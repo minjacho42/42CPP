@@ -11,3 +11,12 @@ Contact::Contact()
 	this->phone_number = "";
 	this->darkest_secret = "";
 }
+
+Contact::Contact(const Contact& obj)
+{
+	this->first_name = obj.first_name;
+	this->last_name = obj.last_name;
+	this->nick_name = obj.nick_name;
+	this->phone_number = obj.phone_number;
+	this->darkest_secret = obj.darkest_secret;
+}

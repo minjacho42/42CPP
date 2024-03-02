@@ -16,6 +16,7 @@ class Contact
 		Contact();
 		Contact(std::string f_name, std::string l_name, std::string n_name, \
 				std::string number, std::string secret);
+		Contact(const Contact&);
 };
 
 #endif
