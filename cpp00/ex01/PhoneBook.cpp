@@ -9,17 +9,29 @@ void PhoneBook::add(Contact new_contact)
 	{
 		if (i > this->max_contact_size - 2)
 			continue;
-		// std::cout << i << " ---> " << i + 1 << "\n";
 		this->contacts[i + 1] = this->contacts[i];
 	}
 	this->contacts[0] = new_contact;
 	if (this->contact_size < 8)
 		this->contact_size++;
-	// std::cout << "Add Success\n" << "contact size : " << this->contact_size << " max contact size : " << this->max_contact_size << "\n";
 }
 
 void PhoneBook::search()
 {
+	std::cout << std::setw(10);
+	std::cout << "INDEX";
+	std::cout << "|";
+	std::cout << std::setw(10);
+	std::cout << "FST NAME";
+	std::cout << "|";
+	std::cout << std::setw(10);
+	std::cout << "LST NAME";
+	std::cout << "|";
+	std::cout << std::setw(10);
+	std::cout << "NICKNAME";
+	std::cout << "|";
+	std::cout << "\n";
+	std::cout << "--------------------------------------------\n";
 	for (int i = 0; i < this->contact_size; i++)
 	{
 		this->contacts[i].columnPrinter(i + 1);
