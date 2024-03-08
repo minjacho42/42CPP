@@ -11,7 +11,7 @@ class PhoneBook
 	private :
 		Contact contacts[8];
 		int contact_size;
-		const int max_contact_size = 8;
+		const int max_contact_size;
 	public :
 		PhoneBook();
 		void add(Contact new_contact);
