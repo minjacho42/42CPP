@@ -1,5 +1,15 @@
 #include "Contact.hpp"
 
+bool getInputOnlyPrintable(std::string& input)
+{
+	if (!std::getline(std::cin, input))
+		return false;
+	for (size_t i = 0; i < input.length(); i++)
+		if (!std::isprint(input[i]) || (int)input[i] == 27)
+			return false;
+	return true;
+}
+
 Contact::Contact()
 {
 	this->first_name = "";
@@ -9,18 +19,26 @@ Contact::Contact()
 	this->darkest_secret = "";
 }
 
-void Contact::setField()
+bool Contact::setField()
 {
+	if (std::cin.eof() || std::cin.fail())
+		return false;
 	std::cout << "first name : ";
-	std::getline(std::cin, this->first_name);
+	if (!getInputOnlyPrintable(this->first_name))
+		return false;
 	std::cout << "last_name : ";
-	std::getline(std::cin, this->last_name);
+	if (!getInputOnlyPrintable(this->last_name))
+		return false;
 	std::cout << "nick_name : ";
-	std::getline(std::cin, this->nick_name);
+	if (!getInputOnlyPrintable(this->nick_name))
+		return false;
 	std::cout << "phone_number : ";
-	std::getline(std::cin, this->phone_number);
+	if (!getInputOnlyPrintable(this->phone_number))
+		return false;
 	std::cout << "darkest_secret : ";
-	std::getline(std::cin, this->darkest_secret);
+	if (!getInputOnlyPrintable(this->darkest_secret))
+		return false;
+	return true;
 }
 
 void Contact::columnPrinter(int idx)

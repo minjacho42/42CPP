@@ -8,7 +8,7 @@
 
 class Contact
 {
-	private:
+	private :
 		std::string first_name;
 		std::string last_name;
 		std::string nick_name;
@@ -16,7 +16,7 @@ class Contact
 		std::string darkest_secret;
 	public :
 		Contact();
-		void setField();
+		bool setField();
 		void columnPrinter(int idx);
 		static void oneColumnPrinter(const std::string str);
 };
