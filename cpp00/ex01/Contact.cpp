@@ -1,22 +1,22 @@
 #include "Contact.hpp"
 
-bool getInputOnlyPrintable(std::string& input)
+Contact::Contact() : first_name(""),
+	last_name(""),
+	nick_name(""),
+	phone_number(""),
+	darkest_secret("") {}
+
+bool Contact::getInputOnlyPrintable(std::string& input)
 {
 	if (!std::getline(std::cin, input))
+	{
+		std::cout << "\n";
 		return false;
+	}
 	for (size_t i = 0; i < input.length(); i++)
 		if (!std::isprint(input[i]) || (int)input[i] == 27)
 			return false;
 	return true;
-}
-
-Contact::Contact()
-{
-	this->first_name = "";
-	this->last_name = "";
-	this->nick_name = "";
-	this->phone_number = "";
-	this->darkest_secret = "";
 }
 
 bool Contact::setField()
@@ -41,30 +41,18 @@ bool Contact::setField()
 	return true;
 }
 
-void Contact::columnPrinter(int idx)
-{
-	std::cout << std::setw(10);
-	std::cout << idx;
-	std::cout << "|";
-	Contact::oneColumnPrinter(this->first_name);
-	std::cout << "|";
-	Contact::oneColumnPrinter(this->last_name);
-	std::cout << "|";
-	Contact::oneColumnPrinter(this->nick_name);
-	std::cout << "|";
+std::string Contact::getFirstName() {
+	return (this->first_name);
 }
 
-void Contact::oneColumnPrinter(const std::string str)
-{
-	std::string substr;
+std::string Contact::getLastName() {
+	return (this->last_name);
+}
 
-	if (str.length() > 10)
-	{
-		std::cout << str.substr(0, 10);
-	}
-	else
-	{
-		std::cout << std::setw(10);
-		std::cout << str;
-	}
+std::string Contact::getNickName() {
+	return (this->nick_name);
+}
+
+std::string Contact::getPhoneNumber() {
+	return (this->phone_number);
 }

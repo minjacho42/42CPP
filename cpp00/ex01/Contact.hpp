@@ -14,11 +14,14 @@ class Contact
 		std::string nick_name;
 		std::string phone_number;
 		std::string darkest_secret;
+		static bool getInputOnlyPrintable(std::string& input);
 	public :
 		Contact();
 		bool setField();
-		void columnPrinter(int idx);
-		static void oneColumnPrinter(const std::string str);
+		std::string getFirstName();
+		std::string getLastName();
+		std::string getNickName();
+		std::string getPhoneNumber();
 };
 
 #endif
