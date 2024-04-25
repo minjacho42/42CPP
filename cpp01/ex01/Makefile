@@ -1,13 +1,13 @@
 .DEFAULT_GOAL := all
-SRCS =
+SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
 CPP = c++ -Wall -Wextra -Werror -std=c++98 -MMD -MP
-NAME = bin_name
+NAME = cpp01_ex01
 -include $(DEPS)
 
 all :
-	@echo "bin_name : make $(NAME)"
+	@echo "cpp01_ex01 : make $(NAME)"
 	@make $(NAME)
 
 $(NAME) : $(OBJS)
@@ -17,15 +17,15 @@ $(NAME) : $(OBJS)
 	@$(CPP) -c $<
 
 clean :
-	@echo "bin_name : make clean"
+	@echo "cpp01_ex01 : make clean"
 	@rm -f $(OBJS) $(DEPS)
 
 fclean :
-	@echo "bin_name : make fclean"
+	@echo "cpp01_ex01 : make fclean"
 	@rm -f $(OBJS) $(NAME) $(DEPS)
 
 re : fclean
-	@ echo "bin_name : make re"
+	@ echo "cpp01_ex01 : make re"
 	@ make all
 
 .PHONY: all clean fclean re
