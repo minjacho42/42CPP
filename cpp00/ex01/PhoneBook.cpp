@@ -19,7 +19,7 @@ void PhoneBook::add(Contact new_contact)
 void PhoneBook::search()
 {
 	if (this->contact_size < 1) {
-		std::cout << "Phonebook is empty\n";
+		std::cout << "\033[1;31mPhonebook Is Empty\n\033[0m";
 		return;
 	}
 	tableHeaderPrinter();
@@ -78,24 +78,22 @@ void PhoneBook::rowPrinter(int idx)
 
 
 void PhoneBook::getNthIndexContact() {
-	std::string line;
+	int n;
+	std::string left;
 
 	std::cout << "Please enter the index : ";
-	if (!getline(std::cin, line))
+	std::cin >> n;
+	if (std::cin.fail() || n < 1 || n > this->contact_size)
 	{
-		std::cout << "\n";
-		std::cout << "\033[1;31mError!\n\033[0m";
-		return ;
+		std::cin.clear();
+		std::cout << "\033[1;31mInput Error!\n\033[0m";
+	} else {
+		std::cout << "First Name : " << this->contacts[n - 1].getFirstName() << "\n";
+		std::cout << "Last Name : " << this->contacts[n - 1].getLastName() << "\n";
+		std::cout << "Nick Name : " << this->contacts[n - 1].getNickName() << "\n";
+		std::cout << "Phone Number : " << this->contacts[n - 1].getPhoneNumber() << "\n";
 	}
-	line.
-	if (n < 1 || n > 8) {
-		std::cout << "Not Valid Index";
-		return ;
-	}
-	std::cout << "First Name : " << this->contacts[n - 1].getFirstName() << "\n";
-	std::cout << "Last Name : " << this->contacts[n - 1].getLastName() << "\n";
-	std::cout << "Nick Name : " << this->contacts[n - 1].getNickName() << "\n";
-	std::cout << "Phone Number : " << this->contacts[n - 1].getPhoneNumber() << "\n";
+	std::getline(std::cin, left);
 	return;
 }
 
@@ -112,13 +110,13 @@ bool PhoneBook::getLineWithPrompt(std::string prompt, std::string& buffer) {
 void PhoneBook::program(PhoneBook& phoneBook) {
 	std::string op;
 
-	while (getLineWithPrompt("> ", op)) {
+	while (getLineWithPrompt("PHONEBOOK> ", op)) {
 		if (op.compare("ADD") == 0)
 		{
 			Contact newContact;
 			if (!newContact.setField())
 			{
-				std::cout << "\033[1;31mError!\n\033[0m";
+				std::cout << "\033[1;31mInput Error!\n\033[0m";
 				continue;
 			}
 			phoneBook.add(newContact);

@@ -13,6 +13,8 @@ bool Contact::getInputOnlyPrintable(std::string& input)
 		std::cout << "\n";
 		return false;
 	}
+	if (input.length() < 1)
+		return false;
 	for (size_t i = 0; i < input.length(); i++)
 		if (!std::isprint(input[i]) || (int)input[i] == 27)
 			return false;
