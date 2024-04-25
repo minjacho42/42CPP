@@ -9,21 +9,21 @@
 
 class PhoneBook
 {
-	private :
+	private:
 		Contact contacts[8];
 		int contact_size;
-		static const int max_contact_size = 8;
+		static const int kMaxContactSize = 8;
 
-		void getNthIndexContact();
-		void rowPrinter(int idx);
-		static void oneColumnPrinter(const std::string str);
-		static void tableHeaderPrinter();
-		static bool getLineWithPrompt(std::string prompt, std::string& buffer);
-	public :
+		void GetNthIndexContact();
+		void RowPrinter(int idx);
+		static void OneColumnPrinter(const std::string str);
+		static void TableHeaderPrinter();
+		static bool GetLineWithPrompt(std::string prompt, std::string& buffer);
+	public:
 		PhoneBook();
-		void add(Contact new_contact);
-		void search();
-		static void program(PhoneBook& phoneBook);
+		void Add(Contact new_contact);
+		void Search();
+		static void Program(PhoneBook& phoneBook);
 };
 
 #endif

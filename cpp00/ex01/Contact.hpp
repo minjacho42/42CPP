@@ -7,20 +7,21 @@
 
 class Contact
 {
-	private :
+	private:
 		std::string first_name;
 		std::string last_name;
 		std::string nick_name;
 		std::string phone_number;
 		std::string darkest_secret;
+
 		static bool getInputOnlyPrintable(std::string& input);
-	public :
+	public:
 		Contact();
-		bool setField();
-		std::string getFirstName();
-		std::string getLastName();
-		std::string getNickName();
-		std::string getPhoneNumber();
+		bool SetField();
+		std::string GetFirstName();
+		std::string GetLastName();
+		std::string GetNickName();
+		std::string GetPhoneNumber();
 };
 
 #endif

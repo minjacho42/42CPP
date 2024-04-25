@@ -3,5 +3,5 @@
 
 int main() {
 	PhoneBook phoneBook;
-	PhoneBook::program(phoneBook);
+	PhoneBook::Program(phoneBook);
 }

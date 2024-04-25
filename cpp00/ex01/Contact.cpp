@@ -21,7 +21,7 @@ bool Contact::getInputOnlyPrintable(std::string& input)
 	return true;
 }
 
-bool Contact::setField()
+bool Contact::SetField()
 {
 	if (std::cin.eof() || std::cin.fail())
 		return false;
@@ -43,18 +43,18 @@ bool Contact::setField()
 	return true;
 }
 
-std::string Contact::getFirstName() {
+std::string Contact::GetFirstName() {
 	return (this->first_name);
 }
 
-std::string Contact::getLastName() {
+std::string Contact::GetLastName() {
 	return (this->last_name);
 }
 
-std::string Contact::getNickName() {
+std::string Contact::GetNickName() {
 	return (this->nick_name);
 }
 
-std::string Contact::getPhoneNumber() {
+std::string Contact::GetPhoneNumber() {
 	return (this->phone_number);
 }
