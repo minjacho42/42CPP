@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := all
-SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+SRCS = main.cpp Zombie.cpp zombieHorde.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
 CPP = c++ -Wall -Wextra -Werror -std=c++98 -MMD -MP
