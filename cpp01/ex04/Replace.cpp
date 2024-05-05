@@ -1,5 +1,4 @@
 # include "Replace.hpp"
-# include <iostream>
 
 Replace::Replace(std::string filename, std::string s1, std::string s2):
 	filename(filename),
@@ -38,9 +37,11 @@ void Replace::run()
 		std::cerr << "File Open Error\n";
 		return ;
 	}
+	for (size_t i = 0; i < s1.length(); i++)
+		if_buffer[i] = '\0';
 	ifs.read(if_buffer, s1.length());
 	of_buffer.append(if_buffer);
-	while (!ifs.eof())
+	while (!(ifs.eof() || ifs.fail()))
 	{
 		ifs.read(if_buffer, s1.length());
 		of_buffer.append(if_buffer);
