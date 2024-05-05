@@ -13,5 +13,5 @@ void HumanA::setWeapon(const Weapon& weapon)
 
 void HumanA::attack()
 {
-	std::cout << this->name << "attacks with their" << this->weapon.getType() << "\n";
+	std::cout << this->name << " attacks with their " << this->weapon.getType() << "\n";
 }

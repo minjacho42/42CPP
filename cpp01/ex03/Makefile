@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := all
-SRCS = main.cpp, Weapon.cpp, HumanA.cpp, HumanB.cpp
+SRCS = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
 CPP = c++ -Wall -Wextra -Werror -std=c++98 -MMD -MP
