@@ -43,10 +43,10 @@ void Replace::run()
 	of_buffer.append(if_buffer);
 	while (!(ifs.eof() || ifs.fail()))
 	{
-		ifs.read(if_buffer, s1.length());
-		of_buffer.append(if_buffer);
 		for (size_t i = 0; i < s1.length(); i++)
 			if_buffer[i] = '\0';
+		ifs.read(if_buffer, s1.length());
+		of_buffer.append(if_buffer);
 		this->pushReplacedString(of_buffer, ofs);
 	}
 	ofs << of_buffer;

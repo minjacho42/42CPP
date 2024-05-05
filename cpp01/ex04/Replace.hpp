@@ -12,10 +12,10 @@ class Replace
 		std::string filename;
 		std::string s1;
 		std::string s2;
+		void pushReplacedString(std::string& of_buffer, std::ofstream &ofs);
 	public:
 		Replace(std::string filename, std::string s1, std::string s2);
 		void run();
-		void pushReplacedString(std::string& of_buffer, std::ofstream &ofs);
 };
 
 #endif
