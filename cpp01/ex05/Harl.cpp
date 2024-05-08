@@ -7,7 +7,7 @@ Harl::Harl():
 	error_msg("This is unacceptable! I want to speak to the manager now.")
 	{}
 
-Harl::Harl(std::string debug_msg, std::string info_msg, std::string warning_msg, std::string error_msg):
+Harl::Harl(const std::string& debug_msg, const std::string& info_msg, const std::string& warning_msg, const std::string& error_msg):
 	debug_msg(debug_msg), info_msg(info_msg), warning_msg(warning_msg), error_msg(error_msg)
 	{}
 
@@ -31,7 +31,7 @@ void Harl::error()
 	std::cout << error_msg << std::endl;
 }
 
-void Harl::complain(std::string level)
+void Harl::complain(const std::string& level)
 {
 	int i;
 	// Harl 맴버함수와 관련된 변수명이기 때문에

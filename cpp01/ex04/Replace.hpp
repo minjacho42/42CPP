@@ -9,12 +9,12 @@ class Replace
 {
 	private:
 		Replace();
-		std::string filename;
-		std::string s1;
-		std::string s2;
-		void pushReplacedString(std::string& of_buffer, std::ofstream &ofs, size_t read_len);
+		const std::string filename;
+		const std::string s1;
+		const std::string s2;
+		void pushReplacedString(std::string& of_buffer, std::ofstream& ofs, const size_t read_len);
 	public:
-		Replace(std::string filename, std::string s1, std::string s2);
+		Replace(const std::string& filename, const std::string& s1, const std::string& s2);
 		void run();
 };
 

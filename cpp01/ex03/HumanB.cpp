@@ -1,15 +1,8 @@
 # include "HumanB.hpp"
 
-HumanB::HumanB(std::string name)
+HumanB::HumanB(const std::string& name): name(name)
 {
-	this->name = name;
 	this->weapon = NULL;
-}
-
-HumanB::HumanB(std::string name, Weapon& weapon)
-{
-	this->name = name;
-	this->weapon = &weapon;
 }
 
 void HumanB::setWeapon(Weapon& weapon)

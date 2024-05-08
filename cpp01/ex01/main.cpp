@@ -1,6 +1,6 @@
 #include "Zombie.hpp"
 
-void checker() {system("leaks cpp01_ex01");}
+// void checker() {system("leaks cpp01_ex01");}
 
 int main()
 {
