@@ -46,7 +46,7 @@ void Harl::complain(const std::string& level)
 	std::string str_list[4] = {"debug", "info", "warning", "error"};
 
 	for (i = 0; i < 4; i++) {
-		if (level.compare(str_list[i])) {
+		if (!level.compare(str_list[i])) {
 			(this->*f_ptr[i])();
 			// f_ptr라는 함수 포인터 배열에서 i번째 함수 포인터가 가리키는 함수 (*f_ptr[i])이고,
 			// 이때 이 함수는 this라는 인스턴스의 맴버함수이기에 this->를 써줘서 this의 내부 맴버변수를 참고 할 수 있게 한다.

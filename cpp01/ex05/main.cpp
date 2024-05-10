@@ -9,6 +9,6 @@ int main()
 		"warning message",
 		"error message"
 	);
-	harl1.complain("error");
+	harl1.complain("warning");
 	// harl2.complain("error");
 }

@@ -14,7 +14,6 @@ class Zombie
 		Zombie(std::string name);
 		~Zombie();
 		void setName(std::string name);
-		static Zombie* zombieHorde(int N, std::string name);
 };
 
 #endif

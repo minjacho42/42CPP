@@ -52,6 +52,8 @@ void Replace::run()
 		for (size_t i = 0; i < read_len; i++)
 			if_buffer[i] = '\0';
 		ifs.read(if_buffer, read_len);
+		if (ifs.eof() || ifs.fail())
+			break;
 		of_buffer.append(if_buffer);
 		this->pushReplacedString(of_buffer, ofs, read_len);
 	}
