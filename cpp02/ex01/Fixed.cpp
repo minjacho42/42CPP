@@ -11,6 +11,19 @@ Fixed::Fixed(Fixed& instance)
 	*this = instance;
 }
 
+Fixed::Fixed(const int integer)
+{
+	std::cout << "Integer constructor called (Fixed)\n";
+	raw_value = integer;
+	raw_value <<= fractional_bits;
+}
+
+Fixed::Fixed(const float number)
+{
+	std::cout << "Float constructor called (Fixed)\n";
+
+}
+
 Fixed::~Fixed()
 {
 	std::cout << "Destructor called (Fixed)\n";

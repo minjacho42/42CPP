@@ -12,7 +12,7 @@ class Fixed
 		Fixed();
 		Fixed(Fixed& instance);
 		Fixed(const int integer);
-		Fixed(const double number);
+		Fixed(const float number);
 		~Fixed();
 		Fixed& operator=(const Fixed& rvalue);
 		int getRawBits(void) const; //맴버 변수들의 값을 바꾸지 않는 함수.
