@@ -1,6 +1,6 @@
 #include "Replace.hpp"
 
-void leaks() {system("leaks cpp01_ex04");}
+// void leaks() {system("leaks cpp01_ex04");}
 
 int main(int argc, char **argv)
 {
