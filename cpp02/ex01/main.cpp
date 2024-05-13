@@ -4,13 +4,11 @@
 int main()
 {
 	Fixed a;
-	Fixed b(a);
-	Fixed c;
+	Fixed const b(10);
+	Fixed const c(-42.42f);
 
-	c = b;
-	b.setRawBits(10);
-
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
+	a = Fixed(1234.4321f);
+	std::cout << a.toInt() << " " << a << std::endl;
+	std::cout << b.toInt() << " " << b << std::endl;
+	std::cout << c.toInt() << " " << c << std::endl;
 }

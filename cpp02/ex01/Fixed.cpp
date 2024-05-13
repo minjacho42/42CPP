@@ -20,8 +20,21 @@ Fixed::Fixed(const int integer)
 
 Fixed::Fixed(const float number)
 {
-	std::cout << "Float constructor called (Fixed)\n";
+	int dot_left;
+	float dot_right_f;
 
+	std::cout << "Float constructor called (Fixed)\n";
+	dot_left = (int) number > 0 ? std::floor(number) : std::ceil(number);
+	dot_right_f = std::abs(number - dot_left);
+	raw_value = dot_left > 0 ? dot_left : dot_left * -1;
+	for (int i = 0; i < fractional_bits; i++)
+	{
+		raw_value <<= 1;
+		dot_right_f *= 2;
+		raw_value += (int)std::floor(dot_right_f);
+		dot_right_f -= std::floor(dot_right_f);
+	}
+	raw_value = number > 0 ? raw_value : -raw_value;
 }
 
 Fixed::~Fixed()
@@ -46,4 +59,30 @@ void Fixed::setRawBits(int const raw)
 {
 	std::cout << "setRawBits member function called (Fixed)\n";
 	this->raw_value = raw;
+}
+
+float Fixed::toFloat(void) const
+{
+	float number_f;
+
+	number_f = raw_value;
+	for (int i = 0; i < fractional_bits; i++)
+		number_f /= 2;
+	return number_f;
+}
+
+int Fixed::toInt(void) const
+{
+	int number_i;
+
+	number_i = raw_value;
+	for (int i = 0; i < fractional_bits; i++)
+		number_i /= 2;
+	return number_i;
+}
+
+std::ostream& operator<<(std::ostream& os, const Fixed& rvalue)
+{
+	os << rvalue.toFloat();
+	return os;
 }
