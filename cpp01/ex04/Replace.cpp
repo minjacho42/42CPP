@@ -15,13 +15,13 @@ void Replace::run()
 	std::streamsize read_size = read_len;
 	size_t find_res;
 
-	ifs.open(filename, std::ifstream::in);
+	ifs.open(filename.c_str(), std::ifstream::in);
 	if (!ifs.is_open())
 	{
 		std::cerr << "File Open Error\n";
 		return ;
 	}
-	ofs.open(filename + ".replace", std::ofstream::out);
+	ofs.open((filename + ".replace").c_str(), std::ofstream::out);
 	if (!ofs.is_open())
 	{
 		std::cerr << "File Open Error\n";
