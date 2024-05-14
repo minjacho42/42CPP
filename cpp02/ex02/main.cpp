@@ -4,11 +4,14 @@
 int main()
 {
 	Fixed a;
-	Fixed const b(10);
-	Fixed const c(-42.42f);
-
-	a = Fixed(1234.4321f);
-	std::cout << a.toInt() << " " << a << std::endl;
-	std::cout << b.toInt() << " " << b << std::endl;
-	std::cout << c.toInt() << " " << c << std::endl;
+	// Fixed const b( Fixed( 5.635f ) * Fixed( 2 ) );
+	Fixed const b( Fixed( 0.5f ) );
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << Fixed::max( a, b ) << std::endl;
+	return 0;
 }

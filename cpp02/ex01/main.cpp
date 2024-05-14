@@ -11,4 +11,5 @@ int main()
 	std::cout << a.toInt() << " " << a << std::endl;
 	std::cout << b.toInt() << " " << b << std::endl;
 	std::cout << c.toInt() << " " << c << std::endl;
+	std::cout << Fixed(0.5f) << std::endl;
 }

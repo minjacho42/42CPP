@@ -12,7 +12,7 @@ class Fixed
 		static const int fractional_bits = 8;
 	public:
 		Fixed();
-		Fixed(Fixed& instance);
+		Fixed(const Fixed& instance);
 		Fixed(const int integer);
 		Fixed(const float number);
 		~Fixed();

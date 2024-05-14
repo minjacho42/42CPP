@@ -12,7 +12,7 @@ class Fixed
 		static const int fractional_bits = 8;
 	public:
 		Fixed();
-		Fixed(Fixed& instance);
+		Fixed(const Fixed& instance);
 		Fixed(const int integer);
 		Fixed(const float number);
 		~Fixed();
@@ -33,8 +33,8 @@ class Fixed
 		Fixed operator/(const Fixed& rvalue) const;
 		Fixed& operator++();
 		Fixed& operator--();
-		Fixed operator++(int dummy);
-		Fixed operator--(int dummy);
+		Fixed operator++(int);
+		Fixed operator--(int);
 		static Fixed& min(Fixed& lhs, Fixed& rhs);
 		static const Fixed& min(const Fixed& lhs, const Fixed& rhs);
 		static Fixed& max(Fixed& lhs, Fixed& rhs);

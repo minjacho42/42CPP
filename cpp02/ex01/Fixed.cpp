@@ -5,7 +5,7 @@ Fixed::Fixed(): raw_value(0)
 	std::cout << "Default constructor called (Fixed)\n";
 }
 
-Fixed::Fixed(Fixed& instance)
+Fixed::Fixed(const Fixed& instance)
 {
 	std::cout << "Copy constructor called (Fixed)\n";
 	*this = instance;
@@ -20,21 +20,8 @@ Fixed::Fixed(const int integer)
 
 Fixed::Fixed(const float number)
 {
-	int dot_left;
-	float dot_right_f;
-
 	std::cout << "Float constructor called (Fixed)\n";
-	dot_left = (int) number > 0 ? std::floor(number) : std::ceil(number);
-	dot_right_f = std::abs(number - dot_left);
-	raw_value = dot_left > 0 ? dot_left : dot_left * -1;
-	for (int i = 0; i < fractional_bits; i++)
-	{
-		raw_value <<= 1;
-		dot_right_f *= 2;
-		raw_value += (int)std::floor(dot_right_f);
-		dot_right_f -= std::floor(dot_right_f);
-	}
-	raw_value = number > 0 ? raw_value : -raw_value;
+	raw_value = std::floor(number * std::pow(2, fractional_bits));
 }
 
 Fixed::~Fixed()
@@ -45,7 +32,7 @@ Fixed::~Fixed()
 Fixed& Fixed::operator=(const Fixed& rvalue)
 {
 	std::cout << "Copy assignment operator called (Fixed)\n";
-	this->raw_value = rvalue.getRawBits();
+	this->raw_value = rvalue.raw_value;
 	return (*this);
 }
 
