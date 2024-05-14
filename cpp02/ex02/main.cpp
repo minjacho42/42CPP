@@ -4,8 +4,8 @@
 int main()
 {
 	Fixed a;
-	// Fixed const b( Fixed( 5.635f ) * Fixed( 2 ) );
-	Fixed const b( Fixed( 0.5f ) );
+	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	// Fixed const b( Fixed( 0.5f ) );
 	std::cout << a << std::endl;
 	std::cout << ++a << std::endl;
 	std::cout << a << std::endl;

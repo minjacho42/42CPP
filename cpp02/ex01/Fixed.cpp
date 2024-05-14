@@ -21,7 +21,7 @@ Fixed::Fixed(const int integer)
 Fixed::Fixed(const float number)
 {
 	std::cout << "Float constructor called (Fixed)\n";
-	raw_value = std::floor(number * std::pow(2, fractional_bits));
+	raw_value = roundf(number * std::pow(2, fractional_bits));
 }
 
 Fixed::~Fixed()
