@@ -122,18 +122,25 @@ Fixed Fixed::operator-(const Fixed& rvalue) const
 
 Fixed Fixed::operator*(const Fixed& rvalue) const
 {
-	Fixed result = *this;
+	long long value_ll;
+	Fixed result;
 
-	result.raw_value *= rvalue.raw_value;
-	result.raw_value >>= fractional_bits;
+	value_ll = this->raw_value;
+	value_ll *= rvalue.raw_value;
+	value_ll >>= 8;
+	result.raw_value = value_ll;
 	return (result);
 }
 
 Fixed Fixed::operator/(const Fixed& rvalue) const
 {
-	Fixed result = *this;
+	Fixed result;
+	long long l_raw;
+	long long r_raw;
 
-	result.raw_value = (result.raw_value << 8) / rvalue.raw_value;
+	l_raw = this->raw_value;
+	r_raw = rvalue.raw_value;
+	result.raw_value = (l_raw << 8) / r_raw;
 	return (result);
 }
 

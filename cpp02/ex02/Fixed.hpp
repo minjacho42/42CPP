@@ -5,6 +5,9 @@
 # include <fstream>
 # include <cmath>
 
+# define FIXED_MAX 8388607
+# define FIXED_MIN -8388608
+
 class Fixed
 {
 	private:

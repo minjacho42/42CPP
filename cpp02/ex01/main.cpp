@@ -11,5 +11,7 @@ int main()
 	std::cout << a.toInt() << " " << a << std::endl;
 	std::cout << b.toInt() << " " << b << std::endl;
 	std::cout << c.toInt() << " " << c << std::endl;
-	std::cout << Fixed(0.5f) << std::endl;
+	std::cout.precision(10);
+	std::cout << Fixed(FIXED_MAX) << std::endl; // 최대
+	std::cout << Fixed(FIXED_MIN) << std::endl; // 최소
 }
