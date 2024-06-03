@@ -10,13 +10,13 @@ class ClapTrap
 		static const unsigned int default_hit_point = 10;
 		static const unsigned int default_energy_point = 10;
 		static const unsigned int default_attack_damage = 0;
-		bool	hasEnoughPoint(void);
 
 	protected:
 		std::string		name;
 		unsigned int	hit_point;
 		unsigned int	energy_point;
 		unsigned int	attack_damage;
+		virtual bool	hasEnoughPoint(void);
 
 	public:
 		ClapTrap();
