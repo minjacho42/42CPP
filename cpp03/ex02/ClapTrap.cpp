@@ -8,7 +8,7 @@ attack_damage(default_attack_damage)
 	std::cout << "Default constructor called [ClapTrap]" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name): name(name),
+ClapTrap::ClapTrap(const std::string& name): name(name),
 hit_point(default_hit_point),
 energy_point(default_energy_point),
 attack_damage(default_attack_damage)
@@ -16,7 +16,7 @@ attack_damage(default_attack_damage)
 	std::cout << "Name constructor called [ClapTrap]" << std::endl;
 }
 
-ClapTrap::ClapTrap(ClapTrap &instance)
+ClapTrap::ClapTrap(const ClapTrap &instance)
 {
 		std::cout << "Copy constructor called [ClapTrap]" << std::endl;
 	*this = instance;

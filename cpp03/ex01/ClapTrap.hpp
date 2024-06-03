@@ -20,8 +20,8 @@ class ClapTrap
 
 	public:
 		ClapTrap();
-		ClapTrap(std::string name);
-		ClapTrap(ClapTrap& instance);
+		ClapTrap(const std::string& name);
+		ClapTrap(const ClapTrap& instance);
 		virtual ~ClapTrap();
 		ClapTrap& operator=(const ClapTrap& rvalue);
 

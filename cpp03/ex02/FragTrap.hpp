@@ -14,8 +14,8 @@ class FragTrap : public ClapTrap
 		bool	hasEnoughPoint(void);
 	public:
 		FragTrap();
-		FragTrap(std::string name);
-		FragTrap(FragTrap& instance);
+		FragTrap(const std::string& name);
+		FragTrap(const FragTrap& instance);
 		~FragTrap();
 		FragTrap& operator=(const FragTrap& rvalue);
 

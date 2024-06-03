@@ -19,8 +19,8 @@ class ClapTrap
 		bool	hasEnoughPoint(void);
 	public:
 		ClapTrap();
-		ClapTrap(std::string name);
-		ClapTrap(ClapTrap& instance);
+		ClapTrap(const std::string& name);
+		ClapTrap(const ClapTrap& instance);
 		~ClapTrap();
 		ClapTrap& operator=(const ClapTrap& rvalue);
 

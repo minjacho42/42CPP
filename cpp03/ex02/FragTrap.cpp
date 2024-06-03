@@ -8,7 +8,7 @@ FragTrap::FragTrap()
 	this->attack_damage = default_attack_damage;
 }
 
-FragTrap::FragTrap(std::string name)
+FragTrap::FragTrap(const std::string& name)
 
 {
 	std::cout << "Name constructor called [FragTrap]" << std::endl;
@@ -18,7 +18,7 @@ FragTrap::FragTrap(std::string name)
 	this->attack_damage = default_attack_damage;
 }
 
-FragTrap::FragTrap(FragTrap &instance)
+FragTrap::FragTrap(const FragTrap &instance)
 {
 	std::cout << "Copy constructor called [FragTrap]" << std::endl;
 	*this = instance;
@@ -77,6 +77,8 @@ void	FragTrap::attack(const std::string& target)
 
 void	FragTrap::highFivesGuys(void)
 {
+	if (!hasEnoughPoint())
+		return ;
 	std::cout << "[FragTrap] " \
 	<< this->name << ": HIGHFIVE!! GUYS!" \
 	<< std::endl;

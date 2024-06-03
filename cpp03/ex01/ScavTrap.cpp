@@ -8,7 +8,7 @@ ScavTrap::ScavTrap()
 	this->attack_damage = default_attack_damage;
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(const std::string& name)
 
 {
 	std::cout << "Name constructor called [ScavTrap]" << std::endl;
@@ -18,7 +18,7 @@ ScavTrap::ScavTrap(std::string name)
 	this->attack_damage = default_attack_damage;
 }
 
-ScavTrap::ScavTrap(ScavTrap &instance)
+ScavTrap::ScavTrap(const ScavTrap &instance)
 {
 	std::cout << "Copy constructor called [ScavTrap]" << std::endl;
 	*this = instance;
@@ -77,6 +77,8 @@ void	ScavTrap::attack(const std::string& target)
 
 void	ScavTrap::guardGate(void)
 {
+	if (!hasEnoughPoint())
+		return ;
 	std::cout << "[ScavTrap] " \
 	<< this->name << " is now in Gate keeper mode" \
 	<< std::endl;

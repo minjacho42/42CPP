@@ -14,8 +14,8 @@ class ScavTrap : public ClapTrap
 		bool	hasEnoughPoint(void);
 	public:
 		ScavTrap();
-		ScavTrap(std::string name);
-		ScavTrap(ScavTrap& instance);
+		ScavTrap(const std::string& name);
+		ScavTrap(const ScavTrap& instance);
 		~ScavTrap();
 		ScavTrap& operator=(const ScavTrap& rvalue);
 
