@@ -1,13 +1,13 @@
 .DEFAULT_GOAL := all
-SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
+SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
 CPP = c++ -Wall -Wextra -Werror -std=c++98 -MMD -MP
-NAME = cpp04_ex00
+NAME = cpp04_ex01
 -include $(DEPS)
 
 all :
-	@echo "cpp04_ex00 : make $(NAME)"
+	@echo "cpp04_ex01 : make $(NAME)"
 	@make $(NAME)
 
 $(NAME) : $(OBJS)
@@ -17,15 +17,15 @@ $(NAME) : $(OBJS)
 	@$(CPP) -c $<
 
 clean :
-	@echo "cpp04_ex00 : make clean"
+	@echo "cpp04_ex01 : make clean"
 	@rm -f $(OBJS) $(DEPS)
 
 fclean :
-	@echo "cpp04_ex00 : make fclean"
+	@echo "cpp04_ex01 : make fclean"
 	@rm -f $(OBJS) $(NAME) $(DEPS)
 
 re : fclean
-	@ echo "cpp04_ex00 : make re"
+	@ echo "cpp04_ex01 : make re"
 	@ make all
 
 .PHONY: all clean fclean re
