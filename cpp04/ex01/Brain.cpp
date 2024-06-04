@@ -18,6 +18,7 @@ Brain::~Brain()
 
 Brain&	Brain::operator=(const Brain& rvalue)
 {
+	std::cout << "[Brain]: assign operator called" << std::endl;
 	if (this == &rvalue)
 		return *this;
 	for (int i = 0; i < ideas_length; i++)
@@ -26,15 +27,22 @@ Brain&	Brain::operator=(const Brain& rvalue)
 }
 
 // allocate new array of string and return
-std::string	*Brain::getIdeas(void) const
+const std::string	*Brain::getIdeas(void) const
 {
-	std::string *result = new std::string[ideas_length];
-	for (int i = 0; i < ideas_length; i++)
-		result[i] = this->ideas[i];
-	return (result);
+	return (this->ideas);
 }
 
 void	Brain::setIdeas(const std::string *ideas)
 {
+	for (int i = 0; i < ideas_length; i++)
+		this->ideas[i] = ideas[i];
+}
 
+void	Brain::printIdeas(void) const
+{
+	for (int i = 0; i < ideas_length; i++)
+	{
+		if (this->ideas[i].length())
+			std::cout << "[" << i << "]: " << this->ideas[i] << std::endl;
+	}
 }

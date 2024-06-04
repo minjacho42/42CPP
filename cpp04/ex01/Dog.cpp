@@ -15,7 +15,6 @@ Dog::Dog(const Dog& instance): Animal(instance)
 		<< ": Copy constructor called"
 		<< std::endl;
 	*this = instance;
-	brain = new Brain();
 }
 
 Dog::~Dog()
@@ -41,4 +40,20 @@ void	Dog::makeSound(void) const
 	std::cout << "[Dog]"
 		<< ": BOW WOW BOW WOW BOW WOW"
 		<< std::endl;
+}
+
+void	Dog::setBrain(Brain& brain)
+{
+	delete this->brain;
+	this->brain = &brain;
+}
+
+const Brain&	Dog::getBrain(void) const
+{
+	return *this->brain;
+}
+
+void	Dog::printBrain(void) const
+{
+	this->brain->printIdeas();
 }

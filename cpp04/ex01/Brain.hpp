@@ -14,8 +14,9 @@ class Brain
 		Brain(const Brain& instance);
 		~Brain();
 		Brain& operator=(const Brain& rvalue);
-		std::string	*getIdeas() const;
-		void		setIdeas(const std::string *ideas);
+		const std::string	*getIdeas() const;
+		void				setIdeas(const std::string *ideas);
+		void				printIdeas(void) const;
 };
 
 #endif

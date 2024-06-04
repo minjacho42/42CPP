@@ -15,7 +15,6 @@ Cat::Cat(const Cat& instance): Animal(instance)
 		<< ": Copy constructor called"
 		<< std::endl;
 	*this = instance;
-	brain = new Brain();
 }
 
 Cat::~Cat()
@@ -41,4 +40,20 @@ void	Cat::makeSound(void) const
 	std::cout << "[Cat]"
 		<< ": MEAW MEOW MEH AEH"
 		<< std::endl;
+}
+
+void	Cat::setBrain(Brain& brain)
+{
+	delete this->brain;
+	this->brain = &brain;
+}
+
+const Brain&	Cat::getBrain(void) const
+{
+	return *this->brain;
+}
+
+void	Cat::printBrain(void) const
+{
+	this->brain->printIdeas();
 }
