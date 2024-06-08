@@ -3,10 +3,10 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 
-void leaks(void)
-{
-	system("leaks cpp04_ex01");
-}
+// void leaks(void)
+// {
+// 	system("leaks cpp04_ex01");
+// }
 
 int main()
 {
@@ -18,7 +18,7 @@ int main()
 	std::string *ideas = new std::string[100];
 	Animal *animal_list[10];
 
-	atexit(leaks);
+	// atexit(leaks);
 	std::cout << "======== Deep Copy Test ========" << std::endl;
 
 	ideas[0] = "meaw";
