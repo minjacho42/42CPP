@@ -16,7 +16,6 @@ Cure& Cure::operator=(const Cure& rvalue)
 {
 	if (this == &rvalue)
 		return (*this);
-	this->type = rvalue.type;
 	return (*this);
 }
 

@@ -31,7 +31,7 @@ Dog& Dog::operator=(const Dog& rvalue)
 	if (this == &rvalue)
 		return (*this);
 	this->type = rvalue.type;
-	this->brain = rvalue.brain;
+	*this->brain = *rvalue.brain;
 	return (*this);
 }
 
@@ -44,8 +44,7 @@ void	Dog::makeSound(void) const
 
 void	Dog::setBrain(Brain& brain)
 {
-	delete this->brain;
-	this->brain = &brain;
+	*this->brain = brain;
 }
 
 const Brain&	Dog::getBrain(void) const

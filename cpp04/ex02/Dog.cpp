@@ -1,6 +1,6 @@
 #include "Dog.hpp"
 
-Dog::Dog(): Animal()
+Dog::Dog(): AAnimal()
 {
 	std::cout << "[Dog]"
 		<< ": Default constructor called"
@@ -9,7 +9,7 @@ Dog::Dog(): Animal()
 	brain = new Brain();
 }
 
-Dog::Dog(const Dog& instance): Animal(instance)
+Dog::Dog(const Dog& instance): AAnimal(instance)
 {
 	std::cout << "[Dog]"
 		<< ": Copy constructor called"
@@ -31,7 +31,7 @@ Dog& Dog::operator=(const Dog& rvalue)
 	if (this == &rvalue)
 		return (*this);
 	this->type = rvalue.type;
-	this->brain = rvalue.brain;
+	*this->brain = *rvalue.brain;
 	return (*this);
 }
 
@@ -44,8 +44,7 @@ void	Dog::makeSound(void) const
 
 void	Dog::setBrain(Brain& brain)
 {
-	delete this->brain;
-	this->brain = &brain;
+	*this->brain = brain;
 }
 
 const Brain&	Dog::getBrain(void) const

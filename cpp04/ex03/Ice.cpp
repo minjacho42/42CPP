@@ -16,7 +16,6 @@ Ice& Ice::operator=(const Ice& rvalue)
 {
 	if (this == &rvalue)
 		return (*this);
-	this->type = rvalue.type;
 	return (*this);
 }
 

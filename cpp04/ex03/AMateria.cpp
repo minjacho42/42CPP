@@ -14,8 +14,6 @@ AMateria& AMateria::operator=(const AMateria& rvalue)
 {
 	if (this == &rvalue)
 		return (*this);
-
-	this->type = rvalue.type;
 	return (*this);
 }
 
