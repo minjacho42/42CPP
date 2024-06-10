@@ -40,12 +40,15 @@ AForm	*Intern::makeForm(const std::string form_name, const std::string target)
 	{
 		case 0:
 			new_form = new ShrubberyCreationForm(target);
+			std::cout << "Intern creates " << form_name << std::endl;
 			break;
 		case 1:
 			new_form = new RobotomyRequestForm(target);
+			std::cout << "Intern creates " << form_name << std::endl;
 			break;
 		case 2:
 			new_form = new PresidentialPardonForm(target);
+			std::cout << "Intern creates " << form_name << std::endl;
 			break;
 		default:
 			std::cout << "No such form name" << std::endl;
