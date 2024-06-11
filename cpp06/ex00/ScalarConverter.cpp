@@ -22,6 +22,25 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& rvalue)
 	return (*this);
 }
 
+std::string ScalarConverter::trimSpace(std::string& target)
+{
+	int i = 0;
+	int j = target.length() - 1;
+
+	while (i < j + 1 && target[i] != ' ' && target[i] != '\t')
+		i++;
+	while (i < j + 1 && target[j] != ' ' && target[j] != '\t')
+		j--;
+	return (target.substr(i, j - i));
+}
+
+bool ScalarConverter::isChar(const std::string& target)
+{
+	if (target.length() != 1)
+		return false;
+
+}
+
 char toChar(const std::string& target)
 {
 	if ()

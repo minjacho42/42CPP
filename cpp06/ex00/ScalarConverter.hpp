@@ -6,6 +6,8 @@
 
 class ScalarConverter
 {
+	private:
+		static std::string	trimSpace(std::string& target);
 
 	public:
 		ScalarConverter();
@@ -13,6 +15,10 @@ class ScalarConverter
 		~ScalarConverter();
 		ScalarConverter& operator=(const ScalarConverter& rvalue);
 
+		static bool		isChar(const std::string& target);
+		static bool		isInt(const std::string& target);
+		static bool		isFloat(const std::string& target);
+		static bool		isDouble(const std::string& target);
 		static char		toChar(const std::string& target);
 		static int		toInt(const std::string& target);
 		static float	toFloat(const std::string& target);
