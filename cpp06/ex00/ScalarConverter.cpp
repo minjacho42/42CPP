@@ -27,25 +27,28 @@ std::string ScalarConverter::trimSpace(std::string& target)
 	int i = 0;
 	int j = target.length() - 1;
 
-	while (i < j + 1 && target[i] != ' ' && target[i] != '\t')
+	while (i < j + 1 && (target[i] == ' ' || target[i] == '\t'))
 		i++;
-	while (i < j + 1 && target[j] != ' ' && target[j] != '\t')
+	while (i < j + 1 && (target[j] == ' ' || target[j] == '\t'))
 		j--;
-	return (target.substr(i, j - i));
+	return (target.substr(i, j - i + 1));
 }
 
 bool ScalarConverter::isChar(const std::string& target)
 {
-	if (target.length() != 1)
+	if (!(target.length() == 3 && target[0] == '\'' && target[2] == '\''))
 		return false;
-
+	if (isprint(target[1]))
+		return true;
+	else
+		return false;
 }
 
-char toChar(const std::string& target)
-{
-	if ()
-	std::atoi();
-}
+// char toChar(const std::string& target)
+// {
+// 	if ()
+// 	std::atoi();
+// }
 int toInt(const std::string& target)
 {
 	std::atoi(target.c_str());

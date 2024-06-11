@@ -3,13 +3,14 @@
 
 # include <string>
 # include <iostream>
+# include <cctype>
 
 class ScalarConverter
 {
 	private:
-		static std::string	trimSpace(std::string& target);
 
 	public:
+		static std::string	trimSpace(std::string& target);
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter& instance);
 		~ScalarConverter();
