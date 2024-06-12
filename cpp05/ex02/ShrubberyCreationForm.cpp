@@ -40,6 +40,7 @@ void	ShrubberyCreationForm::execute(const Bureaucrat& executer) const
 			<< "    | |   \n"
 			<< "    | |   \n"
 			<< "    ===   \n" << std::endl;
+	ostrm.close();
 }
 
 const char* ShrubberyCreationForm::FileCantOpenException::what() const throw()

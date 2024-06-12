@@ -3,6 +3,10 @@
 Bureaucrat::Bureaucrat(const std::string& name, int grade): name(name), grade(grade)
 {
 	std::cout << "[Bureaucrat]: Constructor called" << std::endl;
+	if (grade > lowest_grade)
+		throw Bureaucrat::GradeTooLowException();
+	if (grade < highest_grade)
+		throw Bureaucrat::GradeTooHighException();
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& instance): name(instance.name)
@@ -82,4 +86,16 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& rvalue)
 {
 	os << rvalue.getName() << ", bureaucrat grade " << rvalue.getGrade();
 	return os;
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+	const char* reason = "Grade is too high for bureaucrat";
+	return (reason);
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+	const char* reason = "Grade is too low for bureaucrat";
+	return (reason);
 }

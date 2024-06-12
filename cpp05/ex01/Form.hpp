@@ -14,6 +14,8 @@ class Form
 		bool				is_signed;
 		const int			grade_to_sign;
 		const int			grade_to_excute;
+		static const int	lowest_grade = 150;
+		static const int	highest_grade = 1;
 		Form();
 	public:
 		Form(const std::string& name, const int grade_to_sign, const int grade_to_excute);

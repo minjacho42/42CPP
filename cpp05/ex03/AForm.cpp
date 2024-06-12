@@ -2,7 +2,12 @@
 
 AForm::AForm(const std::string& name, const int grade_to_sign, const int grade_to_excute):
 	name(name), is_signed(false), grade_to_sign(grade_to_sign), grade_to_excute(grade_to_excute)
-{}
+{
+	if (grade_to_excute < highest_grade || grade_to_sign < highest_grade)
+		throw AForm::GradeTooHighException();
+	if (grade_to_excute > lowest_grade || grade_to_sign > lowest_grade)
+		throw AForm::GradeTooLowException();
+}
 
 AForm::AForm(const AForm& instance):
 	name(instance.name), is_signed(instance.is_signed), grade_to_sign(instance.grade_to_sign), grade_to_excute(instance.grade_to_excute)
