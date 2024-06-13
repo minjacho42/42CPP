@@ -4,26 +4,28 @@
 # include <string>
 # include <iostream>
 # include <cctype>
+# include <cstdlib>
+# include <sstream>
+# include "LiteralCompound.hpp"
+
+# define CHAR 0
+# define INT 1
+# define FLOAT 2
+# define DOUBLE 3
+# define NONE 4
+
+class LiteralCompound;
 
 class ScalarConverter
 {
 	private:
-
-	public:
-		static std::string	trimSpace(std::string& target);
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter& instance);
 		~ScalarConverter();
 		ScalarConverter& operator=(const ScalarConverter& rvalue);
-
-		static bool		isChar(const std::string& target);
-		static bool		isInt(const std::string& target);
-		static bool		isFloat(const std::string& target);
-		static bool		isDouble(const std::string& target);
-		static char		toChar(const std::string& target);
-		static int		toInt(const std::string& target);
-		static float	toFloat(const std::string& target);
-		static double	toDouble(const std::string& target);
+		static int	getLiteralType(const std::string& target);
+	public:
+		static LiteralCompound	convert(const std::string& target);
 };
 
 #endif

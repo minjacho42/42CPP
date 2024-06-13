@@ -22,36 +22,76 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& rvalue)
 	return (*this);
 }
 
-std::string ScalarConverter::trimSpace(std::string& target)
+int ScalarConverter::getLiteralType(const std::string& target)
 {
-	int i = 0;
-	int j = target.length() - 1;
+	std::stringstream	ss1;
+	std::stringstream	ss2;
+	double				value_d;
+	int					value_i;
+	float				value_f;
 
-	while (i < j + 1 && (target[i] == ' ' || target[i] == '\t'))
-		i++;
-	while (i < j + 1 && (target[j] == ' ' || target[j] == '\t'))
-		j--;
-	return (target.substr(i, j - i + 1));
-}
-
-bool ScalarConverter::isChar(const std::string& target)
-{
-	if (!(target.length() == 3 && target[0] == '\'' && target[2] == '\''))
-		return false;
-	if (isprint(target[1]))
-		return true;
+	// std::cout << "target : " << target << std::endl;
+	if (target.length() < 1)
+		return (NONE);
+	if (target.compare("nan") == 0 || target.compare("-nan") == 0 || target.compare("inf") == 0 || target.compare("-inf") == 0)
+		return (DOUBLE);
+	if (target.compare("nanf") == 0 || target.compare("-nanf") == 0 || target.compare("inff") == 0 || target.compare("-inff") == 0)
+		return (FLOAT);
+	if (target.length() == 1 && !isdigit(target[0]))
+		return (CHAR);
+	ss1.str(target);
+	ss1 >> value_i;
+	if (ss1.eof())
+		return (INT);
+	if (target[target.length() - 1] == 'f')
+	{
+		// std::cout << target.substr(0, target.length() - 1) << std::endl;
+		ss2.str(target.substr(0, target.length() - 1));
+		ss2 >> value_f;
+		if (ss2.eof() && !ss2.fail())
+			return (FLOAT);
+		else
+			return (NONE);
+	}
 	else
-		return false;
+		ss2.str(target);
+	ss2 >> value_d;
+	if (ss2.eof() && !ss2.fail())
+		return (DOUBLE);
+	return (NONE);
 }
 
-// char toChar(const std::string& target)
-// {
-// 	if ()
-// 	std::atoi();
-// }
-int toInt(const std::string& target)
+LiteralCompound ScalarConverter::convert(const std::string& target)
 {
-	std::atoi(target.c_str());
+	std::stringstream	ss;
+	char				value_c;
+	double				value_d;
+	int					value_i;
+	float				value_f;
+	int					literal_type;
+
+	literal_type = getLiteralType(target);
+	// std::cout << literal_type << std::endl;
+	switch (literal_type)
+	{
+		case INT:
+			ss.str(target);
+			ss >> value_i;
+			return (LiteralCompound(value_i, ss.fail()));
+		case CHAR:
+			ss.str(target);
+			ss >> value_c;
+			return (LiteralCompound(value_c));
+		case FLOAT:
+			ss.str(target.substr(0, target.length() - 1));
+			ss >> value_f;
+			return (LiteralCompound(value_f, target));
+		case DOUBLE:
+			ss.str(target);
+			ss >> value_d;
+			return (LiteralCompound(value_d, target));
+		case NONE:
+			break;
+	}
+	return (LiteralCompound());
 }
-float toFloat(const std::string& target);
-double toDouble(const std::string& target);
