@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := all
-SRCS = Base.cpp main.cpp
+SRCS = main.cpp Base.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
 CPP = c++ -std=c++98 -MMD -MP -Wall -Wextra -Werror
