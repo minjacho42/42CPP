@@ -1,18 +1,28 @@
 #include "Span.hpp"
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+
 
 int main() {
-	Span sp = Span(20);
-	int arr[] = {1,2,3,4,5,6,7,8,9};
+	Span sp = Span(100);
+	int arr[] = {10,2,100,42,55,6,723,8,91};
 	std::list<int> l(arr, arr + sizeof(arr) / sizeof(arr[0]));
 
-	sp.addNumber(6);
-	sp.addNumber(2);
-	sp.addNumber(3);
-	sp.addNumber(10);
-	sp.addNumber(12);
-	sp.addNumber< std::list<int> >(l.begin(), l.end());
+	std::srand(static_cast<unsigned int>(time(0)));
+	for (int i = 0; i < 10; i++) {
+		int num = rand() % 100000;
+		std::cout << num << std::endl;
+		try {
+			sp.addNumber(num);
+		} catch (std::exception &e) {
+			std::cout << e.what() << std::endl;
+		}
+	}
 
+	sp.printer();
+	// sp.addNumber< std::list<int> >(l.begin(), l.end());
+	// sp.printer();
 	try {
 		std::cout << sp.shortestSpan() << std::endl;
 	} catch (std::exception &e) {

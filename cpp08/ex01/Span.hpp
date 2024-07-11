@@ -7,6 +7,7 @@
 # include <algorithm>
 # include <exception>
 # include <iterator>
+# include <iostream>
 
 class Span
 {
@@ -44,6 +45,7 @@ class Span
 		void addNumberByArray(const std::list<int> l);
 		unsigned int shortestSpan() const; // Span 내부에 있는 수의 개수가 1개 또는 없으면 exception
 		unsigned int longestSpan() const; // Span 내부에 있는 수의 개수가 1개 또는 없으면 exception
+		void printer() const;
 };
 
 #endif
