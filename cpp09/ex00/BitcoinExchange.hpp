@@ -8,13 +8,14 @@
 # include <exception>
 # include <fstream>
 # include <sstream>
+# include <iomanip>
 
 class BitcoinExchange {
 	private:
-		std::map<std::string, float> bitcoinPriceMap;
+		std::map<unsigned int, float> bitcoinPriceMap;
 
 		BitcoinExchange();
-
+		void isValidDate(int y, int m, int d);
 	public:
 		BitcoinExchange(const std::string dbName);
 		BitcoinExchange(const BitcoinExchange& instance);
@@ -22,11 +23,6 @@ class BitcoinExchange {
 		~BitcoinExchange();
 
 		void run(const std::string filename);
-
-		class FileOpenError: public std::exception {
-			public:
-				virtual const char* what() const throw();
-		};
 };
 
 #endif

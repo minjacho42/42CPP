@@ -1,13 +1,13 @@
 .DEFAULT_GOAL := all
-SRCS = main.cpp BitcoinExchange.cpp
+SRCS = main.cpp RPN.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
 CPP = c++ -Wall -Wextra -Werror -std=c++98 -MMD -MP
-NAME = btc
+NAME = RPN
 -include $(DEPS)
 
 all :
-	@echo "btc : make $(NAME)"
+	@echo "RPN : make $(NAME)"
 	@make $(NAME)
 
 $(NAME) : $(OBJS)
@@ -17,15 +17,15 @@ $(NAME) : $(OBJS)
 	@$(CPP) -c $<
 
 clean :
-	@echo "btc : make clean"
+	@echo "RPN : make clean"
 	@rm -f $(OBJS) $(DEPS)
 
 fclean :
-	@echo "btc : make fclean"
+	@echo "RPN : make fclean"
 	@rm -f $(OBJS) $(NAME) $(DEPS)
 
 re : fclean
-	@ echo "btc : make re"
+	@ echo "RPN : make re"
 	@ make all
 
 .PHONY: all clean fclean re
