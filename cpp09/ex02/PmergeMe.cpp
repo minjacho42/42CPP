@@ -1,5 +1,4 @@
 #include "PmergeMe.hpp"
-#include <iostream>
 
 PmergeMe::PmergeMe() {};
 
@@ -9,6 +8,9 @@ PmergeMe::PmergeMe(int ac, char **av) {
 	k = std::pow(2, level);
 	for (int i = 0; i < k; i++) {
 		int num = i < n ? std::atoi(av[i + 1]) : -1;
+		if (i < n && num < 0) {
+			throw std::invalid_argument("argument is not a postivie number");
+		}
 		pair.push_back(num);
 	}
 }

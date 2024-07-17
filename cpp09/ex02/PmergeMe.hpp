@@ -6,6 +6,7 @@
 # include <vector>
 # include <list>
 # include <cmath>
+# include <exception>
 
 class PmergeMe {
 	private:
