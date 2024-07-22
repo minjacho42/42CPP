@@ -1,4 +1,5 @@
 #include "PmergeMe.hpp"
+#include <iostream>
 
 PmergeMe::PmergeMe() {};
 
@@ -55,12 +56,40 @@ void PmergeMe::runVector() {
 	initPair();
 	v.push_back(std::make_pair(pair[0], 0));
 	for (int lv = level - 1; lv > -1; lv--) {
-		std::vector< std::pair<int, int> > tmp_v = v;
-		for (std::vector< std::pair<int, int> >::iterator it = tmp_v.begin(); it != tmp_v.end(); it++) {
+		// std::cout << "------\nlevel : " << lv << std::endl;
+		std::vector< std::pair<int, int> > single_tmp;
+		std::vector< std::pair<int, int> > tmp_v;
+		for (std::vector< std::pair<int, int> >::iterator it = v.begin(); it != v.end(); it++) {
 			int pair_idx = it->second + std::pow(2, lv);
 			if (pair[pair_idx] < 0)
-				continue;
-			std::pair<int, int> new_pair = std::make_pair(pair[pair_idx], pair_idx);
+				single_tmp.push_back(*it);
+			else
+				tmp_v.push_back(*it);
+		}
+		// std::cout << "single size : " << single_tmp.size() << std::endl;
+		int start_idx = 0;
+		// std::cout << "size : " << tmp_v.size() << std::endl;
+		int jacob = 0;
+		while (start_idx < static_cast<int>(tmp_v.size())) {
+			for (int i = start_idx + jacob; i >= start_idx; i--) {
+				int pair_idx = tmp_v[i].second + std::pow(2, lv);
+				if (pair[pair_idx] < 0) {
+					continue;
+				}
+				std::pair<int, int> new_pair = std::make_pair(pair[pair_idx], pair_idx);
+				v.insert(std::lower_bound(v.begin(), v.end(), new_pair, comparePairs), new_pair);
+			}
+			start_idx += (jacob + 1);
+			int size_before = start_idx * 2 + 1;
+			jacob = std::pow(2, std::floor(std::log2(size_before)) + 1) - size_before - 1;
+			if (jacob < 0)
+				jacob = 0;
+			// std::cout << start_idx << " " << size_before << " " << jacob + 1 << std::endl;
+			if (jacob > static_cast<int>(tmp_v.size()) - start_idx - 1)
+				jacob = static_cast<int>(tmp_v.size()) - start_idx - 1;
+		}
+		for (std::vector< std::pair<int, int> >::iterator it = single_tmp.begin(); it != single_tmp.end(); it++) {
+			std::pair<int, int> new_pair = *it;
 			v.insert(std::lower_bound(v.begin(), v.end(), new_pair, comparePairs), new_pair);
 		}
 	}
