@@ -17,7 +17,7 @@ RPN& RPN::operator=(const RPN& rvalue) {
 }
 
 int RPN::run() {
-	std::stack<int> s;
+	std::stack<int, std::list<int> > s;
 	std::stringstream ss;
 
 	ss.str(_input);

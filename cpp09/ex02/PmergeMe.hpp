@@ -4,7 +4,7 @@
 # include <algorithm>
 # include <utility>
 # include <vector>
-# include <list>
+# include <deque>
 # include <cmath>
 # include <exception>
 
@@ -13,13 +13,14 @@ class PmergeMe {
 		int k;
 		int n;
 		int level;
-		std::vector<int> pair;
-		std::list<int> pair_l;
+		std::vector<int> pair_v;
+		std::deque<int> pair_d;
 		std::vector< std::pair<int, int> > v;
-		std::list< std::pair<int, int> > l;
+		std::deque< std::pair<int, int> > d;
 
 		PmergeMe();
-		void initPair();
+		void initPairV();
+		void initPairD();
 
 	public:
 		PmergeMe(int argc, char **argv);
@@ -28,9 +29,9 @@ class PmergeMe {
 		PmergeMe& operator=(const PmergeMe& rvalue);
 
 		void runVector();
-		void runList();
+		void runDeque();
 		std::vector<int> getSortedVec();
-		std::list<int> getSortedList();
+		std::deque<int> getSortedDeque();
 };
 
 #endif

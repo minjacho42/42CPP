@@ -7,6 +7,7 @@
 # include <sstream>
 # include <cctype>
 # include <exception>
+# include <list>
 
 class RPN {
 	private:
