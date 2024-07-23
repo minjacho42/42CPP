@@ -33,13 +33,13 @@ int main(int argc, char *argv[]) {
 		std::clock_t end_vec = std::clock();
 		double vec_time = static_cast<double>(end_vec - start_vec) / CLOCKS_PER_SEC;
 		double vec_time_microsec = vec_time * 1e6;
-		std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector : " << vec_time_microsec << " us" << std::endl;
+		std::cout << "Time to process a range of " << sorted_deque.size() << " elements with std::vector : " << vec_time_microsec << " us" << std::endl;
 		std::clock_t start_deque = std::clock();
 		dequeSort.runDeque();
 		std::clock_t end_deque = std::clock();
-		double list_time = static_cast<double>(end_deque - start_deque) / CLOCKS_PER_SEC;
-		double list_time_microsec = list_time * 1e6;
-		std::cout << "Time to process a range of " << argc - 1 << " elements with std::list : " << list_time_microsec << " us" << std::endl;
+		double deque_time = static_cast<double>(end_deque - start_deque) / CLOCKS_PER_SEC;
+		double deque_time_microsec = deque_time * 1e6;
+		std::cout << "Time to process a range of " << sorted_deque.size() << " elements with std::deque : " << deque_time_microsec << " us" << std::endl;
 	} catch (std::exception &e) {
 		std::cout << "Error: " << e.what() << std::endl;
 	}

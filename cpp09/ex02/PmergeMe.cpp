@@ -5,7 +5,7 @@ PmergeMe::PmergeMe() {};
 
 PmergeMe::PmergeMe(int ac, char **av) {
 	n = ac - 1;
-	level = std::ceil(std::log2(n));
+	level = std::ceil(log2(n));
 	k = std::pow(2, level);
 	for (int i = 0; i < k; i++) {
 		int num = i < n ? std::atoi(av[i + 1]) : -1;
@@ -73,6 +73,9 @@ void PmergeMe::runVector() {
 			else
 				tmp_v.push_back(*it);
 		}
+		for (std::vector< std::pair<int, int> >::iterator it = single_tmp.begin(); it != single_tmp.end(); it++) {
+			v.erase(std::find(v.begin(), v.end(), *it));
+		}
 		// std::cout << "single size : " << single_tmp.size() << std::endl;
 		int start_idx = 0;
 		// std::cout << "size : " << tmp_v.size() << std::endl;
@@ -84,11 +87,12 @@ void PmergeMe::runVector() {
 					continue;
 				}
 				std::pair<int, int> new_pair = std::make_pair(pair_v[pair_idx], pair_idx);
-				v.insert(std::lower_bound(v.begin(), v.end(), new_pair, comparePairs), new_pair);
+				std::vector<std::pair<int, int> >::iterator it = std::find(v.begin(), v.end(), tmp_v[i]);
+				v.insert(std::lower_bound(v.begin(), it, new_pair, comparePairs), new_pair);
 			}
 			start_idx += (jacob + 1);
 			int size_before = start_idx * 2 + 1;
-			jacob = std::pow(2, std::floor(std::log2(size_before)) + 1) - size_before - 1;
+			jacob = std::pow(2, std::floor(log2(size_before)) + 1) - size_before - 1;
 			if (jacob < 0)
 				jacob = 0;
 			// std::cout << start_idx << " " << size_before << " " << jacob + 1 << std::endl;
@@ -116,6 +120,9 @@ void PmergeMe::runDeque() {
 			else
 				tmp_d.push_back(*it);
 		}
+		for (std::deque< std::pair<int, int> >::iterator it = single_tmp.begin(); it != single_tmp.end(); it++) {
+			d.erase(std::find(d.begin(), d.end(), *it));
+		}
 		// std::cout << "single size : " << single_tmp.size() << std::endl;
 		int start_idx = 0;
 		// std::cout << "size : " << tmp_d.size() << std::endl;
@@ -127,11 +134,12 @@ void PmergeMe::runDeque() {
 					continue;
 				}
 				std::pair<int, int> new_pair = std::make_pair(pair_d[pair_idx], pair_idx);
-				d.insert(std::lower_bound(d.begin(), d.end(), new_pair, comparePairs), new_pair);
+				std::deque<std::pair<int, int> >::iterator it = std::find(d.begin(), d.end(), tmp_d[i]);
+				d.insert(std::lower_bound(d.begin(), it, new_pair, comparePairs), new_pair);
 			}
 			start_idx += (jacob + 1);
 			int size_before = start_idx * 2 + 1;
-			jacob = std::pow(2, std::floor(std::log2(size_before)) + 1) - size_before - 1;
+			jacob = std::pow(2, std::floor(log2(size_before)) + 1) - size_before - 1;
 			if (jacob < 0)
 				jacob = 0;
 			// std::cout << start_idx << " " << size_before << " " << jacob + 1 << std::endl;
