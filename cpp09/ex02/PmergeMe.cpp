@@ -56,7 +56,7 @@ void PmergeMe::initPairD() {
 }
 
 bool comparePairs(const std::pair<int, int>& a, const std::pair<int, int>& b) {
-	return a.first < b.first;
+	return a.first <= b.first;
 }
 
 void PmergeMe::runVector() {
@@ -88,6 +88,8 @@ void PmergeMe::runVector() {
 				}
 				std::pair<int, int> new_pair = std::make_pair(pair_v[pair_idx], pair_idx);
 				std::vector<std::pair<int, int> >::iterator it = std::find(v.begin(), v.end(), tmp_v[i]);
+				if (it != v.end())
+					it++;
 				v.insert(std::lower_bound(v.begin(), it, new_pair, comparePairs), new_pair);
 			}
 			start_idx += (jacob + 1);
@@ -135,6 +137,8 @@ void PmergeMe::runDeque() {
 				}
 				std::pair<int, int> new_pair = std::make_pair(pair_d[pair_idx], pair_idx);
 				std::deque<std::pair<int, int> >::iterator it = std::find(d.begin(), d.end(), tmp_d[i]);
+				if (it != d.end())
+					it++;
 				d.insert(std::lower_bound(d.begin(), it, new_pair, comparePairs), new_pair);
 			}
 			start_idx += (jacob + 1);

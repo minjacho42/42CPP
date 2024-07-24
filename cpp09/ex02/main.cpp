@@ -16,13 +16,15 @@ int main(int argc, char *argv[]) {
 			std::cout << " " << argv[i];
 		}
 		std::cout << std::endl;
-		// sort.runVector();
+		sort.runVector();
 		sort.runDeque();
-		std::cout << "After:";
-		// std::vector<int> sorted_vec = sort.getSortedVec();
-		// for (std::vector<int>::iterator it = sorted_vec.begin(); it != sorted_vec.end(); it++) {
-		// 	std::cout << " " << *it;
-		// }
+		std::cout << "After vec :";
+		std::vector<int> sorted_vec = sort.getSortedVec();
+		for (std::vector<int>::iterator it = sorted_vec.begin(); it != sorted_vec.end(); it++) {
+			std::cout << " " << *it;
+		}
+		std::cout << std::endl;
+		std::cout << "After deque :";
 		std::deque<int> sorted_deque = sort.getSortedDeque();
 		for (std::deque<int>::iterator it = sorted_deque.begin(); it != sorted_deque.end(); it++) {
 			std::cout << " " << *it;
