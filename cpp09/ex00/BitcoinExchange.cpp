@@ -47,6 +47,8 @@ BitcoinExchange::BitcoinExchange(const std::string dbName) {
 			bitcoinPriceMap[key] = price;
 		}
 	}
+	if (bitcoinPriceMap.size() < 1)
+		throw std::invalid_argument("Empty file");
 }
 
 BitcoinExchange::~BitcoinExchange() {}
